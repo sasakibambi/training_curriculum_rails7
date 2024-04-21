@@ -46,7 +46,8 @@ class CalendarsController < ApplicationController
        # 曜日の取得とフォーマット
       day_of_week = wdays[(@todays_date + x).wday]
       # 曜日情報と計画をハッシュに追加
-      days = { :month => (@todays_date + x).month, :date => (@todays_date + x).day, :day_of_week => day_of_week, :plans => today_plans }
+      # days = { :month => (@todays_date + x).month, :date => (@todays_date + x).day, :day_of_week => day_of_week, :plans => today_plans }
+      days = { month: (@todays_date + x).month, date: (@todays_date + x).day, day_of_week: day_of_week, plans: today_plans }
       @week_days.push(days)
       end
 
