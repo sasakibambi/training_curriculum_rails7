@@ -1,4 +1,5 @@
 <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
+<%#コントローラでインスタンス変数を生成してビュー、モデルで使用%>
     <%= f.label :日付を選択, class: 'label' %>
     <%= f.date_field :date, class: 'date-select' %>
     <%= f.label :予定を入力, class: 'label' %>
@@ -10,7 +11,7 @@
   <% @week_days.each do |day| %>
     <div class='item'>
       <div class='date'>
-        <% day[:month] %>/<% day[:date] %>
+        <%= day[:month] %>/<%= day[:date] %><%= day[:day_of_week] %>
       </div>
       <ul class='content'>
       <% if day[:plans].length != 0 %>
