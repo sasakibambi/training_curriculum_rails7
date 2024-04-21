@@ -9,13 +9,19 @@ class CalendarsController < ApplicationController
   # 予定の保存
   def create
     Plan.create(plan_params)
+    # plan.rbモデルで定義されたもの
+    # データを使うとき保存するときは全部モデル
+    # ストロングパラメーター（なんのデータを取得するか）
+    # createはメソッド名
+    # paramsはビューから送られてきたデータを使うときの大きい箱（から選ぶ）
     redirect_to action: :index
   end
 
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)
+   # Calendersは送られていない、@Planがビューに送られている→plan
   end
 
   def get_week
@@ -40,3 +46,6 @@ class CalendarsController < ApplicationController
 
   end
 end
+
+
+# binding.pryは具体的な詳細を確かめたいとき
